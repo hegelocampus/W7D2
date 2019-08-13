@@ -43,7 +43,7 @@ end
 class MyStack
   def initialize
     @store = []
-    @max = []
+    @max = Hash.new
   end
 
   def peek
@@ -60,23 +60,18 @@ class MyStack
 
   def pop
     del = @store.pop
-    if self.max == del
-        @max.pop
-    end
+    
+    
   end
 
   def push(val)
-    @store.push(val)
-    if @max.empty? || self.max < val
-        @max << val
-    else
-        @max.unshift(val)
-    end
+    @store.push([val, self.max])
   end
 
   def max
-    @max[-1]
+    
   end
+
 end
 
 class StackQueue
